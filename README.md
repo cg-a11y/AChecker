@@ -2,7 +2,7 @@
 
 AChecker is an automated accessibility checker used to evaluate the accessibility of HTML pages, and help ensure they can be accessed by all individuals, including those with disabilities, using assistive technologies to navigate the Internet.
 
-AChecker live site: http://achecker.ca
+AChecker live site: http://achecker.achecks.ca
 
 What sets AChecker apart from other automated accessibility checkers?
 
