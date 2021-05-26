@@ -102,7 +102,6 @@ function get_guideline_div($guideline_rows, $num_of_guidelines_per_row, $format 
 <table style="width:100%">
 <tr>
 <td>
-<div style="color:red;margin:auto;font-weight:bold;width:70%;line-height:1.5rem">AChecker website will shut down on April 30, 2021. Please use other accessibility validators such as <a href="https://wave.webaim.org/">WAVE</a>, <a href="https://www.deque.com/axe/browser-extensions/">AXE</a> or refer to <a href="https://www.w3.org/WAI/ER/tools/">W3C Web Accessibility Evaluation Tools List</a> for more tools.</div>
 <div class="center-input-form">
 <form name="input_form" enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
 
@@ -248,18 +247,6 @@ echo get_guideline_div($rows, $num_of_guidelines_per_row, "checkbox");  // used 
 	</fieldset>
 	</div>
 </form>
-<div style="float:right;margin-right:2em;clear:right;width:250px;"><br />
-<a href="checker/index.php#skipads"><img src="images/clr.gif" alt="<?php echo _AC("skip_over_ads"); ?>" border="0"/></a>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <ins class="adsbygoogle"
-       style="display:inline-block;width:250px;height:250px"
-       data-ad-client="pub-8538177464726172"
-       data-ad-slot="0783349774"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-<a name="skipads" title="passed ads"></a>
-</div>
 
 </div>
 </td>
