@@ -1,5 +1,5 @@
 User-agent: *
-Disabllow: /checkacc.php*
+Disallow: /checkacc.php*
 
 User-agent: MJ12bot
 Disallow: /
