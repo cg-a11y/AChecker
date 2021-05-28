@@ -17,8 +17,8 @@ if (!defined('AC_INCLUDE_PATH')) { exit; }
 define('AC_PHP_COMPOSER_PATH', AC_INCLUDE_PATH .'../vendor/');
 require_once AC_PHP_COMPOSER_PATH.'autoload.php';
 
-define('AC_DEVEL', 1);
-define('AC_ERROR_REPORTING', E_ALL ^  E_NOTICE); // default is E_ALL ^ E_NOTICE, use E_ALL or E_ALL + E_STRICT for developing
+#define('AC_DEVEL', 1);
+#define('AC_ERROR_REPORTING', E_ALL ^  E_NOTICE); // default is E_ALL ^ E_NOTICE, use E_ALL or E_ALL + E_STRICT for developing
 
 // Emulate register_globals off. src: http://php.net/manual/en/faq.misc.php#faq.misc.registerglobals
 function unregister_GLOBALS() {
