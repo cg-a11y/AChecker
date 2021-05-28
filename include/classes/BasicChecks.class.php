@@ -2875,7 +2875,8 @@ class BasicChecks {
 					$int_css .= $temp_css_code;
 					//$css_code=$css_code._AC("internal_CSS").":\n\t\n\t      ";
 				else
-					$ext_css [$csslist [$rule ["idcss"]]] .= $temp_css_code;
+					$ext_css [$csslist [$rule ["idcss"]]] = $ext_css [$csslist [$rule ["idcss"]]] . $temp_css_code;
+					//$ext_css [$csslist [$rule ["idcss"]]] .= $temp_css_code;
 				//$css_code=$css_code._AC("external_CSS")." (<a title='external CSS link' href='".$csslist[$rule["idcss"]]."'>".$csslist[$rule["idcss"]]."</a>):\n\t\n\t      ";
 			}
 			if ($int_css != '')
