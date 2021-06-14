@@ -145,7 +145,7 @@ if ($_POST["validate_uri"])
 	if (!$msg->containsErrors())
 	{
 		$_POST['uri'] = $_REQUEST['uri'] = $uri;
-		$validate_content = @file_get_contents($uri);
+		$validate_content = Utility::getURLContents($uri);
 
 		if (isset($_POST["enable_html_validation"]))
 			$htmlValidator = new HTMLValidator("uri", $uri);
