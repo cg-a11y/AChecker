@@ -106,7 +106,7 @@ $user_link_id = $userLinksDAO->getUserLinkID($user_id, $uri, $gids);
 $userLinksDAO->setLastSessionID($user_link_id, Utility::getSessionID());
 
 // validating uri content
-$validate_content = @file_get_contents($uri);
+$validate_content = Utility::getURLContents($uri);
 
 if (isset($validate_content))
 {
