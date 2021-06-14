@@ -33,6 +33,31 @@ class Utility {
 		return sha1(mt_rand() . microtime(TRUE));
 	}
 
+	function getRedirectFinalTarget( $url )
+	{
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_NOBODY, 1);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // follow redirects
+		curl_setopt($ch, CURLOPT_AUTOREFERER, 1); // set referer on redirect
+		curl_exec($ch);
+		$target = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+		curl_close($ch);
+
+		return $target ? $target : false;
+	}
+
+	function getURLContents( $url )
+	{
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$output = curl_exec($ch);
+		curl_close($ch);
+
+		return $output;
+	}
+
 	 /**
 	 * Return the valid format of given $uri. Otherwise, return FALSE
 	 * Return $uri itself if it has valid content, 
@@ -49,6 +74,14 @@ class Utility {
 	 */
 	public static function getValidURI($uri)
 	{
+
+		$url = Utility::getRedirectFinalTarget( $uri );
+		if ( !$url )
+		{
+			$url = trim( $uri );
+		}
+		$uri = $url;
+
 		$uri_prefixes = array('http://', 'https://', 'http://www.', 'https://www.');
 		$already_a_uri = false;
 		
