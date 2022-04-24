@@ -536,7 +536,8 @@ class BasicChecks {
 	{
 		// 1. The element $e is contained by a "label" element
 		// 2. The element $e has a "title" attribute
-		if ($e->parent()->tag == "label" || isset($e->attr["title"])) return true;
+		// 3. The element $e has a "aria-label" attribute
+		if ($e->parent()->tag == "label" || isset($e->attr["title"]) || isset($e->attr["aria-label"])) return true;
 
 		// 3. The element $e has an "id" attribute value that matches the "for" attribute value of a "label" element
 		$input_id = $e->attr["id"];
@@ -614,8 +615,8 @@ class BasicChecks {
 	*/
 	public static function associated_label_has_text($e, $content_dom)
 	{
-		// 1. The element $e has a "title" attribute
-		if (trim($e->attr["title"]) <> "") return true;
+		// 1. The element $e has a "title" or "aria-label" attribute
+		if (!empty($e->attr["title"]) && !empty($e->attr["aria-label"])) return true;
 
 		// 2. The element $e is contained by a "label" element
 		if ($e->parent()->tag == "label")
@@ -1673,7 +1674,7 @@ class BasicChecks {
 									// tag: check that the predecessor is the tag of the rule
 									//tag: controllo che il predecessore sia il tag della regola
 									if ($e != null /*&& $e->tag == $array_regole["prev"][$i]*/)
-																{
+															{
 										$ris = true;
 										$num_tag_new ++;
 									} else
@@ -1768,7 +1769,7 @@ class BasicChecks {
 								$num_tag = $num_tag_new;
 								$num_regola_best = $num_regola;
 							} elseif ($num_class_new == $num_class) { // same id and class number, check number of tags
-																	//stesso numero di id e class, controllo in numero di tag
+															//stesso numero di id e class, controllo in numero di tag
 
 
 								if ($num_tag_new >= $num_tag) { // same or greater number of id, class and tags: is the priority of the new rule  //stesso o maggiore numero di id, class e tag: la priorità è della nuova regola
@@ -1893,7 +1894,7 @@ class BasicChecks {
 				$sel_string = str_ireplace ( '> {_}', '>', $sel_string );
 
 				//$selettori_array = split ( ',', $sel_string );  // create an array of switches that are separated by ", "
-																//creo un array dei selettori che sono separati da ","
+															//creo un array dei selettori che sono separati da ","
 				$selettori_array = explode ( ',', $sel_string );  // create an array of switches that are separated by ", "
 
 				foreach ( $selettori_array as $sel ) {
