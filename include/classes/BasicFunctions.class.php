@@ -36,8 +36,8 @@ class BasicFunctions {
 	{
 		global $global_e, $global_content_dom;
 
-		// 1. The element $global_e has a "title" attribute
-		if (trim($global_e->attr["title"]) <> "") return true;
+		// 1. The element $global_e has a "title" or "aria-label" attribute
+		if (!empty($global_e->attr["title"]) && !empty($global_e->attr["aria-label"])) return true;
 
 		// 2. The element $global_e is contained by a "label" element
 		if ($global_e->parent()->tag == "label")
@@ -461,7 +461,8 @@ class BasicFunctions {
 
 		// 1. The element $global_e is contained by a "label" element
 		// 2. The element $global_e has a "title" attribute
-		if ($global_e->parent()->tag == "label" || isset($global_e->attr["title"])) return true;
+		// 3. The element $global_e has a "aria-label" attribute
+		if ($global_e->parent()->tag == "label" || isset($global_e->attr["title"]) || isset($global_e->attr["aria-label"])) return true;
 
 		// 3. The element $global_e has an "id" attribute value that matches the "for" attribute value of a "label" element
 		$input_id = $global_e->attr["id"];
